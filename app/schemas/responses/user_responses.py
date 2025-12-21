@@ -1,6 +1,4 @@
 from pydantic import BaseModel, ConfigDict
-
-from app.models.models import User
 from app.schemas.responses.base import BaseTokensResponse
 
 
@@ -22,13 +20,4 @@ class CreateUserResponse(BaseUserResponse, BaseTokensResponse):
 
 
 class UserResponseEntity(BaseUserResponse):
-
-    @classmethod
-    def of_user(cls, user: User) -> "UserResponseEntity":
-        return cls(
-            id=user.id,
-            login=user.login,
-            first_name=user.first_name,
-            last_name=user.last_name,
-            second_name=user.second_name
-        )
+    pass

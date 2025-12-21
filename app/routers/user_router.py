@@ -4,13 +4,8 @@ from email.header import Header
 from fastapi import APIRouter, Response, Depends
 from starlette import status
 
-from app.routers.base import get_response_modes
 from app.schemas.requests.user_requests import CreateUserRequest, PutUserRequest
-from app.schemas.responses.error_responses import ServerErrorResponse, BadRequestResponse, UnauthorizedResponse, \
-    ForbiddenResponse
 from app.schemas.responses.user_responses import CreateUserResponse, UserResponseEntity
-from app.security.security import valid_primary_token
-from app.services.rest_service import get_user_rest_service, UserRestService
 
 user_router = APIRouter(
     prefix="/users",
@@ -25,11 +20,8 @@ user_router = APIRouter(
                 }
 )
 async def create_user(request_body: CreateUserRequest,
-                      response: Response,
-                      api_key: str = Depends(valid_primary_token),
-                      user_rest_service: UserRestService = Depends(get_user_rest_service)) -> CreateUserResponse:
-    response.status_code = status.HTTP_201_CREATED
-    return await user_rest_service.create_user(request_body)
+                      response: Response) -> CreateUserResponse:
+    raise NotImplementedError("This endpoint is not implemented yet.")
 
 
 @user_router.put("/{id}/",
@@ -39,11 +31,9 @@ async def create_user(request_body: CreateUserRequest,
                          "description": "User update successfully."
                      }
                  })
-async def edit_user(request: PutUserRequest, id: int,
-                    api_key: str = Depends(valid_primary_token),
-                    user_rest_service: UserRestService = Depends(get_user_rest_service)) -> UserResponseEntity:
+async def edit_user(request: PutUserRequest, id: int) -> UserResponseEntity:
 
-    return await user_rest_service.put_user(request, id)
+    raise NotImplementedError("This endpoint is not implemented yet.")
 
 
 @user_router.get("/{id}/",
@@ -53,10 +43,8 @@ async def edit_user(request: PutUserRequest, id: int,
                          "description": "User retrieved successfully."
                      }
                  })
-async def get_user(id: int,
-                   api_key: str = Depends(valid_primary_token),
-                   user_rest_service: UserRestService = Depends(get_user_rest_service)) -> UserResponseEntity:
-    return await user_rest_service.find_user_by_id(id)
+async def get_user(id: int) -> UserResponseEntity:
+    raise NotImplementedError("This endpoint is not implemented yet.")
 
 
 @user_router.get("/",
@@ -66,8 +54,7 @@ async def get_user(id: int,
                          "description": "Users retrieved successfully."
                      }
                  })
-async def get_all_users(api_key: str = Depends(valid_primary_token),
-                            user_rest_service: UserRestService = Depends(get_user_rest_service)) -> list[UserResponseEntity]:
-    return await user_rest_service.find_all_users()
+async def get_all_users() -> list[UserResponseEntity]:
+    raise NotImplementedError("This endpoint is not implemented yet.")
 
 

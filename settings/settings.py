@@ -12,18 +12,7 @@ from settings.path import get_env_file_path
 class Settings(BaseSettings):
     ENV: str
     DEBUG: bool = Field(default=False)
-    DB_PREFIX: str
-    DB_NAME: str
-    DB_USER: str
-    DB_HOST: str
-    DB_PORT: str
-    DB_PASSWORD: str
     BASE_URL: str = ""
-
-    SECRET_KEY: str
-    ALGORITHM: str = Field(default="HS256")
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = Field(default=15)
-    REFRESH_TOKEN_EXPIRE_HOURS: int = Field(default=7)
 
     def get_database_url(self) -> str:
         return f"{self.DB_PREFIX}://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
@@ -34,7 +23,6 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file_encoding = 'utf-8',
     )
-
 
 
 def load_settings() -> Settings:

@@ -1,6 +1,9 @@
 from pydantic import BaseModel
 
 
+class ErrorResponse(BaseModel):
+    detail: str
+
 class ServerErrorResponse(BaseModel):
     message: str = "Internal Server Error"
     code: int = 500

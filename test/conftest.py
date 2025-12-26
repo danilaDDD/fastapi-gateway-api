@@ -1,10 +1,6 @@
 import os
 
 import pytest
-
-from app.testutils.asserts import AssertsToken
-
-from app.testutils.asserts import AssertsResponse
 from settings.settings import load_settings, Settings
 
 

@@ -4,6 +4,7 @@ from email.header import Header
 from fastapi import APIRouter, Response, Depends
 from starlette import status
 
+from app.clients.client_manager import get_client_manager
 from app.schemas.requests.user_requests import CreateUserRequest, PutUserRequest
 from app.schemas.responses.user_responses import CreateUserResponse, UserResponseEntity
 
@@ -20,9 +21,11 @@ user_router = APIRouter(
                 }
 )
 async def create_user(request_body: CreateUserRequest,
-                      response: Response) -> CreateUserResponse:
-    raise NotImplementedError("This endpoint is not implemented yet.")
+                      response: Response,
+                      client_manager = Depends(get_client_manager)) -> CreateUserResponse:
 
+    async with client_manager.start() as manager:
+        return await manager.users.create_user(request_body)
 
 @user_router.put("/{id}/",
                  responses={

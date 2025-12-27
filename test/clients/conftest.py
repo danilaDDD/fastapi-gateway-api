@@ -7,14 +7,7 @@ from app.clients.user_client import UserClient
 
 @pytest.fixture(scope="function")
 def session_mock() -> aiohttp.ClientSession:
-    session = Mock()
-
-    session.get = AsyncMock()
-    session.post = AsyncMock()
-    session.put = AsyncMock()
-    session.delete = AsyncMock()
-
-    return session
+    return Mock(spec=aiohttp.ClientSession)
 
 
 @pytest.fixture(scope="function")

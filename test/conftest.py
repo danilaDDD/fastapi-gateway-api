@@ -13,3 +13,7 @@ def setup_all():
 @pytest.fixture(scope="module")
 def settings() -> Settings:
     return load_settings()
+
+@pytest.fixture(scope="session")
+def domain() -> str:
+    return "http://testserver"

@@ -23,7 +23,6 @@ user_router = APIRouter(
 async def create_user(request_body: CreateUserRequest,
                       response: Response,
                       client_manager = Depends(get_client_manager)) -> CreateUserResponse:
-
     async with client_manager.start() as manager:
         return await manager.users.create_user(request_body)
 
@@ -38,7 +37,6 @@ async def edit_user(request: PutUserRequest, id: int) -> UserResponseEntity:
 
     raise NotImplementedError("This endpoint is not implemented yet.")
 
-
 @user_router.get("/{id}/",
                  responses={
                      status.HTTP_200_OK: {
@@ -48,7 +46,6 @@ async def edit_user(request: PutUserRequest, id: int) -> UserResponseEntity:
                  })
 async def get_user(id: int) -> UserResponseEntity:
     raise NotImplementedError("This endpoint is not implemented yet.")
-
 
 @user_router.get("/",
                  responses={

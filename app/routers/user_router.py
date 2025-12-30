@@ -1,11 +1,13 @@
 import datetime
 from email.header import Header
+from typing import Union
 
-from fastapi import APIRouter, Response, Depends
+from fastapi import APIRouter, Response, Depends, HTTPException
 from starlette import status
 
 from app.clients.client_manager import get_client_manager
 from app.schemas.requests.user_requests import CreateUserRequest, PutUserRequest
+from app.schemas.responses.error_responses import ErrorResponse
 from app.schemas.responses.user_responses import CreateUserResponse, UserResponseEntity
 
 user_router = APIRouter(
@@ -21,9 +23,11 @@ user_router = APIRouter(
                 }
 )
 async def create_user(request_body: CreateUserRequest,
-                      response: Response,
-                      client_manager = Depends(get_client_manager)) -> CreateUserResponse:
+                          response: Response,
+                          client_manager = Depends(get_client_manager),
+                      ) -> CreateUserResponse:
     async with client_manager.start() as manager:
+        response.status_code = status.HTTP_201_CREATED
         return await manager.users.create_user(request_body)
 
 @user_router.put("/{id}/",

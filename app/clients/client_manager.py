@@ -8,14 +8,14 @@ from settings.settings import Settings, load_settings
 
 
 class ClientManager:
-    def __init__(self, session_factory: aiohttp.ClientSession, base_url: str):
+    def __init__(self, session_factory: type[aiohttp.ClientSession], base_url: str):
         self._session_factory = session_factory
         self._session = None
         self._base_url = base_url
 
     @asynccontextmanager
     async def start(self):
-        async with self._session_factory as session:
+        async with self._session_factory() as session:
             self._session = session
             try:
                 yield self
@@ -37,7 +37,7 @@ class ClientManager:
 
 
 def get_client_manager(settings: Settings = Depends(load_settings)) -> ClientManager:
-    session_factory = aiohttp.ClientSession()
+    session_factory = aiohttp.ClientSession
     base_url = settings.BASE_URL
 
     return ClientManager(session_factory, base_url)

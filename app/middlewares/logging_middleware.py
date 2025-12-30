@@ -7,8 +7,7 @@ from starlette.requests import Request
 class LoggingMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         try:
-            response = await call_next(request)
-            return response
+            return await call_next(request)
         except Exception as e:
             if os.environ.get("ENV", "dev") != "test":
                 logger = request.app.state.logger

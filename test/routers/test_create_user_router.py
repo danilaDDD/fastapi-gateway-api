@@ -3,7 +3,7 @@ from fastapi import HTTPException
 from mock.mock import patch, AsyncMock
 
 from app.schemas.responses.user_responses import CreateUserResponse
-from test.utils.response_utils import UserResponseUtils
+from test.utils.response_utils import create_user_request, create_user_response
 
 
 @pytest.mark.unit
@@ -16,7 +16,7 @@ class TestCreateUserRequest:
 
     def test_with_valid_response_should_success(self):
         with self.patch() as mock_create_user:
-            expected_resp_dict = UserResponseUtils.create_user_response()
+            expected_resp_dict = create_user_response()
             mock_create_user.return_value = CreateUserResponse.model_validate(expected_resp_dict)
 
             response = self.do_request()
@@ -60,7 +60,7 @@ class TestCreateUserRequest:
                      new_callable=AsyncMock)
 
     def do_request(self):
-        request = UserResponseUtils.create_user_request()
+        request = create_user_request()
         return self.client.post(self.url, json=request)
 
 

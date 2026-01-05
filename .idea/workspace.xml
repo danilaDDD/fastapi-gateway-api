@@ -4,25 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fc46b0a-85a7-411e-8a1b-09d7ed9004cf" name="Changes" comment="finished user_client create user test">
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/middlewares/request_handle_middleware.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/routers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/routers/conftest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/routers/test_create_user_router.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/utils/response_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/clients/client_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/clients/client_manager.py" afterDir="false" />
+    <list default="true" id="7fc46b0a-85a7-411e-8a1b-09d7ed9004cf" name="Changes" comment="add request handling middleware and improve user client error handling">
+      <change afterPath="$PROJECT_DIR$/test/clients/users/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/clients/users/test_find_user_by_id.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/clients/users/test_put_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/clients/user_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/clients/user_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/middlewares/logging_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/middlewares/logging_middleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routers/user_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routers/user_router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/clients/test_user_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/clients/test_user_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/path.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings/path.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/clients/test_user_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/clients/users/test_create_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/routers/test_create_user_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/routers/test_create_user_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/utils/response_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/utils/response_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +58,15 @@
   "keyToString": {
     "FastAPI.run.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python tests.Python tests for test.clients.test_create_user.TestUserClientCreateUser.test_with_invalid_response_200_should_raise_validation_error.executor": "Run",
+    "Python tests.Python tests for test.clients.test_create_user.TestUserClientCreateUser.test_with_not_201_response_should_raise_http_exception.executor": "Run",
+    "Python tests.Python tests for test.clients.test_put_user.TestPutRequest.test_with_invalid_response_200_should_raise_validation_error.executor": "Run",
+    "Python tests.Python tests for test.clients.test_put_user.TestPutRequest.test_with_not_200_response_should_raise_http_exception.executor": "Run",
+    "Python tests.Python tests for test.clients.test_put_user.TestPutRequest.test_with_valid_response_should_return_entity.executor": "Run",
     "Python tests.Python tests for test.clients.test_user_client.TestUserClientCreateUser.executor": "Run",
     "Python tests.Python tests for test.clients.test_user_client.TestUserClientCreateUser.test_with_valid_request_should_return_user_response_entity.executor": "Run",
+    "Python tests.Python tests for test.clients.users.test_create_user.TestUserClientCreateUser.executor": "Run",
+    "Python tests.Python tests for test.clients.users.test_find_user_by_id.TestFindUserById.executor": "Run",
     "Python tests.Python tests for test.end2end.routers.test_create_user.TestCreateUser.test_create_user_success.executor": "Run",
     "Python tests.Python tests for test.end2end.routers.test_create_user_router.TestCreateUserRequest.test_create_user_success.executor": "Run",
     "Python tests.Python tests for test.initial.test_initial.TestInitial.executor": "Run",
@@ -94,11 +93,12 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/clients/users" />
       <recent name="$PROJECT_DIR$/test" />
       <recent name="$PROJECT_DIR$/test/end2end/routers" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test.clients.test_user_client.TestUserClientCreateUser">
+  <component name="RunManager" selected="Python tests.Python tests for test.clients.users.test_find_user_by_id.TestFindUserById">
     <configuration name="run" type="Python.FastAPI">
       <option name="appName" value="app" />
       <option name="file" value="$PROJECT_DIR$/app/main.py" />
@@ -116,7 +116,7 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test.clients.test_user_client.TestUserClientCreateUser" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test.clients.users.test_create_user.TestUserClientCreateUser" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="gateway-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -128,11 +128,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.clients.test_user_client.TestUserClientCreateUser&quot;" />
+      <option name="_new_target" value="&quot;test.clients.users.test_create_user.TestUserClientCreateUser&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test.routers.test_create_user_router.TestCreateUserRequest" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test.clients.users.test_create_user.TestUserClientCreateUser.test_with_invalid_response_200_should_raise_validation_error" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="gateway-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -144,11 +144,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.routers.test_create_user_router.TestCreateUserRequest&quot;" />
+      <option name="_new_target" value="&quot;test.clients.users.test_create_user.TestUserClientCreateUser.test_with_invalid_response_200_should_raise_validation_error&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test.routers.test_create_user_router.TestCreateUserRequest.test_with_raise_any_exception_should_return_error_response" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test.clients.users.test_create_user.TestUserClientCreateUser.test_with_not_201_response_should_raise_http_exception" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="gateway-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -160,11 +160,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.routers.test_create_user_router.TestCreateUserRequest.test_with_raise_any_exception_should_return_error_response&quot;" />
+      <option name="_new_target" value="&quot;test.clients.users.test_create_user.TestUserClientCreateUser.test_with_not_201_response_should_raise_http_exception&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test.routers.test_create_user_router.TestCreateUserRequest.test_with_raise_http_exception_should_return_error_response" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test.clients.users.test_find_user_by_id.TestFindUserById" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="gateway-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -176,11 +176,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.routers.test_create_user_router.TestCreateUserRequest.test_with_raise_http_exception_should_return_error_response&quot;" />
+      <option name="_new_target" value="&quot;test.clients.users.test_find_user_by_id.TestFindUserById&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test.routers.test_create_user_router.TestCreateUserRequest.test_with_valid_response_should_success" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test.clients.users.test_put_user.TestPutRequest.test_with_not_200_response_should_raise_http_exception" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="gateway-api" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -192,25 +192,25 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.routers.test_create_user_router.TestCreateUserRequest.test_with_valid_response_should_success&quot;" />
+      <option name="_new_target" value="&quot;test.clients.users.test_put_user.TestPutRequest.test_with_not_200_response_should_raise_http_exception&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="FastAPI.run" />
-      <item itemvalue="Python tests.Python tests for test.clients.test_user_client.TestUserClientCreateUser" />
-      <item itemvalue="Python tests.Python tests for test.routers.test_create_user_router.TestCreateUserRequest" />
-      <item itemvalue="Python tests.Python tests for test.routers.test_create_user_router.TestCreateUserRequest.test_with_raise_any_exception_should_return_error_response" />
-      <item itemvalue="Python tests.Python tests for test.routers.test_create_user_router.TestCreateUserRequest.test_with_raise_http_exception_should_return_error_response" />
-      <item itemvalue="Python tests.Python tests for test.routers.test_create_user_router.TestCreateUserRequest.test_with_valid_response_should_success" />
+      <item itemvalue="Python tests.Python tests for test.clients.users.test_create_user.TestUserClientCreateUser" />
+      <item itemvalue="Python tests.Python tests for test.clients.users.test_create_user.TestUserClientCreateUser.test_with_invalid_response_200_should_raise_validation_error" />
+      <item itemvalue="Python tests.Python tests for test.clients.users.test_create_user.TestUserClientCreateUser.test_with_not_201_response_should_raise_http_exception" />
+      <item itemvalue="Python tests.Python tests for test.clients.users.test_find_user_by_id.TestFindUserById" />
+      <item itemvalue="Python tests.Python tests for test.clients.users.test_put_user.TestPutRequest.test_with_not_200_response_should_raise_http_exception" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test.clients.test_user_client.TestUserClientCreateUser" />
-        <item itemvalue="Python tests.Python tests for test.routers.test_create_user_router.TestCreateUserRequest" />
-        <item itemvalue="Python tests.Python tests for test.routers.test_create_user_router.TestCreateUserRequest.test_with_raise_any_exception_should_return_error_response" />
-        <item itemvalue="Python tests.Python tests for test.routers.test_create_user_router.TestCreateUserRequest.test_with_valid_response_should_success" />
-        <item itemvalue="Python tests.Python tests for test.routers.test_create_user_router.TestCreateUserRequest.test_with_raise_http_exception_should_return_error_response" />
+        <item itemvalue="Python tests.Python tests for test.clients.users.test_find_user_by_id.TestFindUserById" />
+        <item itemvalue="Python tests.Python tests for test.clients.users.test_create_user.TestUserClientCreateUser" />
+        <item itemvalue="Python tests.Python tests for test.clients.users.test_create_user.TestUserClientCreateUser.test_with_not_201_response_should_raise_http_exception" />
+        <item itemvalue="Python tests.Python tests for test.clients.users.test_create_user.TestUserClientCreateUser.test_with_invalid_response_200_should_raise_validation_error" />
+        <item itemvalue="Python tests.Python tests for test.clients.users.test_put_user.TestPutRequest.test_with_not_200_response_should_raise_http_exception" />
       </list>
     </recent_temporary>
   </component>
@@ -244,7 +244,10 @@
       <workItem from="1766841824945" duration="8569000" />
       <workItem from="1766922884123" duration="606000" />
       <workItem from="1767025492847" duration="1933000" />
-      <workItem from="1767098901553" duration="8019000" />
+      <workItem from="1767098901553" duration="8658000" />
+      <workItem from="1767446920813" duration="640000" />
+      <workItem from="1767533427318" duration="742000" />
+      <workItem from="1767565790028" duration="7194000" />
     </task>
     <task id="LOCAL-00001" summary="implement client manager and user client for user management">
       <option name="closed" value="true" />
@@ -262,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766844903844</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add request handling middleware and improve user client error handling">
+      <option name="closed" value="true" />
+      <created>1767107149742</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1767107149742</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,7 +293,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="implement client manager and user client for user management" />
     <MESSAGE value="finished user_client create user test" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished user_client create user test" />
+    <MESSAGE value="add request handling middleware and improve user client error handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="add request handling middleware and improve user client error handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -292,17 +304,12 @@
           <line>15</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/routers/user_router.py</url>
-          <line>28</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gateway_api$run.coverage" NAME="run Coverage Results" MODIFIED="1766842372850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/gateway_api$.coverage" NAME=" Coverage Results" MODIFIED="1767106855673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gateway_api$.coverage" NAME=" Coverage Results" MODIFIED="1767573733105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/gateway_api$main.coverage" NAME="main Coverage Results" MODIFIED="1766696071875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
   </component>
   <component name="github-copilot-workspace">
